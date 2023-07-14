@@ -15,7 +15,7 @@ type Props = {
   allPostsData: AllPostsData[];
 };
 
-export default function Home({ allPostsData }: Props) {
+export default function Home({ allPostsData }: Props): JSX.Element {
   return (
     <Layout home>
       {/* Keep the existing code here */}
@@ -39,8 +39,10 @@ export default function Home({ allPostsData }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+// async
+export const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData();
+
   return {
     props: {
       allPostsData,

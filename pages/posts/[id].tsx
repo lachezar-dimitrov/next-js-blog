@@ -13,7 +13,7 @@ export default function Post({
     date: string;
     contentHtml: string;
   };
-}) {
+}): JSX.Element {
   return (
     <Layout>
       <Head>
@@ -30,8 +30,10 @@ export default function Post({
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+// async
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostIds();
+
   return {
     paths,
     fallback: false,
@@ -40,6 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params?.id as string);
+
   return {
     props: {
       postData,

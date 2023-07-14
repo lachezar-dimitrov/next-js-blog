@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 
 const name = "Josh K";
+
 export const siteTitle = "Next.js Sample Website";
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
   home?: boolean;
 };
 
-export default function Layout({ children, home }: Props) {
+export default function Layout({ children, home }: Props): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +25,7 @@ export default function Layout({ children, home }: Props) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
+            siteTitle,
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
         <meta name="og:title" content={siteTitle} />
