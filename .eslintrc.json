@@ -1,20 +1,36 @@
 {
   "extends": [
     "next",
+    "plugin:react/all",
     "eslint:recommended",
+    "eslint-config-next",
     "next/core-web-vitals",
+    "plugin:import/recommended",
     "plugin:jsx-a11y/strict",
     "plugin:promise/recommended",
     "plugin:jest-dom/recommended",
     "plugin:sonarjs/recommended",
-    // Prettier should be the last one so it gets the chance to override other configs.
+    // Prettier should be last to override other configs that might conflict with it
     "prettier"
   ],
   "rules": {
+    "react/prop-types": "off",
     "jsx-a11y/alt-text": "off",
+    "react-in-jsx-scope": "off",
     "no-case-declarations": "off",
+    "react/no-string-refs": "off",
+    "react/jsx-sort-props": "off",
     "no-prototype-builtins": "off",
     "jsx-a11y/no-autofocus": "off",
+    "react/jsx-no-literals": "off",
+    "react/sort-prop-types": "off",
+    "react/button-has-type": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-no-leaked-render": "off",
+    "react/require-optimization": "off",
+    "react/require-default-props": "off",
+    "react/jsx-sort-default-props": "off",
+    "react/default-props-match-prop-types": "off",
     "yoda": "error",
     "curly": "error",
     "dot-notation": "error",
@@ -28,6 +44,12 @@
       "error",
       "always",
       { "exceptAfterSingleLine": true }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".tsx"]
+      }
     ],
     "padding-line-between-statements": [
       "error",
@@ -46,20 +68,27 @@
         "prev": ["const", "let", "var"],
         "next": ["const", "let", "var"]
       }
+    ],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ]
   },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
       "extends": [
+        "plugin:import/typescript",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@typescript-eslint/strict"
       ],
       "rules": {
-        "@typescript-eslint/member-ordering": "error",
-        "@typescript-eslint/explicit-function-return-type": "error",
-        "@typescript-eslint/explicit-member-accessibility": "error"
+        "@typescript-eslint/member-ordering": "warn",
+        "@typescript-eslint/explicit-function-return-type": "warn"
       },
       "parserOptions": {
         "tsconfigRootDir": ".",
@@ -79,5 +108,23 @@
     "es6": true,
     "node": true,
     "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.js"
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "__dirname"
+      },
+      "node": true
+    }
   }
 }
