@@ -1,4 +1,5 @@
 //  pages/about.js
+// import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
 export default function About() {
   return <h1>About Page</h1>;
