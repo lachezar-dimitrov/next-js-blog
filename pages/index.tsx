@@ -15,7 +15,7 @@ type Props = {
   allPostsData: AllPostsData[];
 };
 
-export default function Home({ allPostsData }: Props): JSX.Element {
+const Home = ({ allPostsData }: Props): JSX.Element => {
   return (
     <Layout home>
       {/* Keep the existing code here */}
@@ -37,7 +37,9 @@ export default function Home({ allPostsData }: Props): JSX.Element {
       </section>
     </Layout>
   );
-}
+};
+
+export default Home;
 
 // async
 export const getStaticProps: GetStaticProps = () => {
