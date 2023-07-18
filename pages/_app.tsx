@@ -1,12 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import "../styles/global.css";
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <Component {...pageProps} />
       <Analytics />
     </>
   );
-}
+};
+
+export default App;

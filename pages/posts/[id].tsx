@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Date from "../../components/date";
@@ -5,7 +6,7 @@ import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
 
-export default function Post({
+const Post = ({
   postData,
 }: {
   postData: {
@@ -13,7 +14,7 @@ export default function Post({
     date: string;
     contentHtml: string;
   };
-}): JSX.Element {
+}): JSX.Element => {
   return (
     <Layout>
       <Head>
@@ -28,7 +29,9 @@ export default function Post({
       </article>
     </Layout>
   );
-}
+};
+
+export default Post;
 
 // async
 export const getStaticPaths: GetStaticPaths = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-component-props */
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./layout.module.css";
@@ -13,7 +14,7 @@ type Props = {
   home?: boolean;
 };
 
-export default function Layout({ children, home }: Props): JSX.Element {
+const Layout = ({ children, home }: Props): JSX.Element => {
   return (
     <div className={styles.container}>
       <Head>
@@ -72,4 +73,6 @@ export default function Layout({ children, home }: Props): JSX.Element {
       )}
     </div>
   );
-}
+};
+
+export default Layout;

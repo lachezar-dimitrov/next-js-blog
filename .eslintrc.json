@@ -75,7 +75,8 @@
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
       }
-    ]
+    ],
+    "react/jsx-max-depth": ["error", { "max": 5 }]
   },
   "overrides": [
     {
@@ -117,9 +118,6 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "webpack": {
-        "config": "./webpack.config.js"
-      },
       "typescript": {
         "alwaysTryTypes": true,
         "project": "__dirname"

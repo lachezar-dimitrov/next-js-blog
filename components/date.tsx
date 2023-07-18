@@ -4,8 +4,10 @@ type Props = {
   dateString: string;
 };
 
-export default function Date({ dateString }: Props): JSX.Element {
+const Date = ({ dateString }: Props): JSX.Element => {
   const date = parseISO(dateString);
 
   return <time dateTime={dateString}>{format(date, "LLLL d, yyyy")}</time>;
-}
+};
+
+export default Date;
