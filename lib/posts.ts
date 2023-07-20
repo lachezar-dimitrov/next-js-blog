@@ -6,12 +6,14 @@ import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-type PostData = {
+export type PostData = {
   id: string;
   date: string;
   title: string;
-  contentHtml?: string;
+  contentHtml: string;
 };
+
+export type PostId = Pick<PostData, "id">;
 
 export function getSortedPostsData(): PostData[] {
   // Get file names under /posts
@@ -30,7 +32,7 @@ export function getSortedPostsData(): PostData[] {
     // Combine the data with the id
     return {
       id,
-      ...(matterResult.data as { date: string; title: string }),
+      ...(matterResult.data as Omit<PostData, "id">),
     };
   });
 
@@ -44,14 +46,12 @@ export function getSortedPostsData(): PostData[] {
   });
 }
 
-export function getAllPostIds(): { params: { id: string } }[] {
+export function getAllPostIds(): PostId[] {
   const fileNames = fs.readdirSync(postsDirectory);
 
   return fileNames.map((fileName) => {
     return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
+      id: fileName.replace(/\.md$/, ""),
     };
   });
 }
@@ -76,3 +76,12 @@ export async function getPostData(id: string): Promise<PostData> {
     ...(matterResult.data as { date: string; title: string }),
   };
 }
+
+// Sample fetch request with no caching
+// export async function getUnsplashPhoto(): Promise<string> {
+//   const res = await fetch("https://source.unsplash.com/random", {
+//     cache: "no-store",
+//   });
+
+//   return res.url;
+// }
